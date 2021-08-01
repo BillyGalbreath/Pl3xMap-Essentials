@@ -38,6 +38,11 @@ public final class Pl3xMapEssentials extends JavaPlugin {
             return;
         }
 
+        if (!Config.WARP_FEATURE && !Config.HOME_FEATURE && !Config.DEBUG_MODE) {
+            Logger.severe("You have neither warps nor homes enabled!");
+            getServer().getPluginManager().disablePlugin(this);
+            return;
+        }
         Pl3xMapHook.load(this);
 
         getServer().getPluginManager().registerEvents(new EssentialsListener(), this);

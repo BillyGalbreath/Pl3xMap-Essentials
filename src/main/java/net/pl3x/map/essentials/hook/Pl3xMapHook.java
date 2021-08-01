@@ -44,14 +44,16 @@ public class Pl3xMapHook {
         api().mapWorlds().forEach(mapWorld -> {
             WorldConfig worldConfig = WorldConfig.get(mapWorld);
             if (worldConfig.ENABLED) {
-                SimpleLayerProvider provider = SimpleLayerProvider.builder(worldConfig.WARPS_LABEL)
-                        .showControls(worldConfig.WARPS_SHOW_CONTROLS)
-                        .defaultHidden(worldConfig.WARPS_CONTROLS_HIDDEN)
-                        .build();
-                mapWorld.layerRegistry().register(Key.of("essentials_" + mapWorld.uuid() + "_warps"), provider);
-                Pl3xMapTask task = new Pl3xMapTask(mapWorld, worldConfig, provider);
-                task.runTaskTimerAsynchronously(plugin, 0, 20L * Config.UPDATE_INTERVAL);
-                providers.put(mapWorld.uuid(), task);
+                if (Config.WARP_FEATURE) {
+                    SimpleLayerProvider provider = SimpleLayerProvider.builder(worldConfig.WARPS_LABEL)
+                            .showControls(worldConfig.WARPS_SHOW_CONTROLS)
+                            .defaultHidden(worldConfig.WARPS_CONTROLS_HIDDEN)
+                            .build();
+                    mapWorld.layerRegistry().register(Key.of("essentials_" + mapWorld.uuid() + "_warps"), provider);
+                    Pl3xMapTask task = new Pl3xMapTask(mapWorld, worldConfig, provider);
+                    task.runTaskTimerAsynchronously(plugin, 0, 20L * Config.UPDATE_INTERVAL);
+                    providers.put(mapWorld.uuid(), task);
+                }
 
                 if (Config.HOME_FEATURE) {
                     SimpleLayerProvider homeProvider = SimpleLayerProvider.builder(worldConfig.HOMES_LABEL)
