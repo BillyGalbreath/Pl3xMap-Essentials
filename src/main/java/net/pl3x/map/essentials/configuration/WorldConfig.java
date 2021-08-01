@@ -71,6 +71,13 @@ public class WorldConfig {
     public int WARPS_ZINDEX = 999;
     public String WARPS_TOOLTIP = "{warp}";
 
+    public String HOMES_LABEL = "Homes";
+    public boolean HOMES_SHOW_CONTROLS = true;
+    public boolean HOMES_CONTROLS_HIDDEN = false;
+    public int HOMES_PRIORITY = 995;
+    public int HOMES_ZINDEX = 999;
+    public String HOMES_TOOLTIP = "{player}'s home";
+
     private void layerSettings() {
         WARPS_LABEL = getString("warps.label", WARPS_LABEL);
         WARPS_SHOW_CONTROLS = getBoolean("warps.show-controls", WARPS_SHOW_CONTROLS);
@@ -78,6 +85,13 @@ public class WorldConfig {
         WARPS_PRIORITY = getInt("warps.priority", WARPS_PRIORITY);
         WARPS_ZINDEX = getInt("warps.z-index", WARPS_ZINDEX);
         WARPS_TOOLTIP = getString("warps.tooltip", WARPS_TOOLTIP);
+
+        HOMES_LABEL = getString("homes.label", HOMES_LABEL);
+        HOMES_SHOW_CONTROLS = getBoolean("homes.show-controls", HOMES_SHOW_CONTROLS);
+        HOMES_CONTROLS_HIDDEN = getBoolean("homes.hide-by-default", HOMES_CONTROLS_HIDDEN);
+        HOMES_PRIORITY = getInt("homes.priority", HOMES_PRIORITY);
+        HOMES_ZINDEX = getInt("homes.z-index", HOMES_ZINDEX);
+        HOMES_TOOLTIP = getString("homes.tooltip", HOMES_TOOLTIP);
     }
 
     public int ICON_SIZE = 16;

@@ -22,6 +22,10 @@ public final class Pl3xMapEssentials extends JavaPlugin {
             saveResource("warp.png", false);
         }
 
+        if (!new File(getDataFolder(), "home.png").exists()) {
+            saveResource("home.png", false);
+        }
+
         if (!getServer().getPluginManager().isPluginEnabled("Essentials")) {
             Logger.severe("Essentials not found!");
             getServer().getPluginManager().disablePlugin(this);

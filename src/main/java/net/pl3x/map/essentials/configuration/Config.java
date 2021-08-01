@@ -85,10 +85,12 @@ public class Config {
     public static boolean DEBUG_MODE = false;
     public static int UPDATE_INTERVAL = 5;
     public static boolean HIDE_VANISHED = true;
+    public static boolean HOME_FEATURE = true;
 
     private static void baseSettings() {
         DEBUG_MODE = getBoolean("settings.debug-mode", DEBUG_MODE);
         UPDATE_INTERVAL = getInt("settings.update-interval", UPDATE_INTERVAL);
         HIDE_VANISHED = getBoolean("settings.hide-vanished", HIDE_VANISHED);
+        HOME_FEATURE = getBoolean("settings.enable-displaying-homes", HOME_FEATURE);
     }
 }
