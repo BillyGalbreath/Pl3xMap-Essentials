@@ -8,7 +8,7 @@ import net.pl3x.map.essentials.Logger;
 import net.pl3x.map.essentials.configuration.Config;
 import net.pl3x.map.essentials.configuration.WorldConfig;
 import net.pl3x.map.essentials.task.HomeTask;
-import net.pl3x.map.essentials.task.Pl3xMapTask;
+import net.pl3x.map.essentials.task.WarpTask;
 import org.bukkit.plugin.Plugin;
 
 import javax.imageio.ImageIO;
@@ -24,7 +24,7 @@ public class Pl3xMapHook {
     public static final Key warpIconKey = Key.of("essentials_warp_icon");
     public static final Key homeIconKey = Key.of("essentials_home_icon");
 
-    private static final Map<UUID, Pl3xMapTask> providers = new HashMap<>();
+    private static final Map<UUID, WarpTask> providers = new HashMap<>();
     private static final Map<UUID, HomeTask> homeProviders = new HashMap<>();
 
     public static void load(Plugin plugin) {
@@ -50,7 +50,7 @@ public class Pl3xMapHook {
                             .defaultHidden(worldConfig.WARPS_CONTROLS_HIDDEN)
                             .build();
                     mapWorld.layerRegistry().register(Key.of("essentials_" + mapWorld.uuid() + "_warps"), provider);
-                    Pl3xMapTask task = new Pl3xMapTask(mapWorld, worldConfig, provider);
+                    WarpTask task = new WarpTask(mapWorld, worldConfig, provider);
                     task.runTaskTimerAsynchronously(plugin, 0, 20L * Config.UPDATE_INTERVAL);
                     providers.put(mapWorld.uuid(), task);
                 }
@@ -70,7 +70,7 @@ public class Pl3xMapHook {
     }
 
     public static void disable() {
-        providers.values().forEach(Pl3xMapTask::disable);
+        providers.values().forEach(WarpTask::disable);
         providers.clear();
         homeProviders.values().forEach(HomeTask::disable);
         homeProviders.clear();
