@@ -22,6 +22,10 @@ public final class Pl3xMapEssentials extends JavaPlugin {
             saveResource("warp.png", false);
         }
 
+        if (!new File(getDataFolder(), "home.png").exists()) {
+            saveResource("home.png", false);
+        }
+
         if (!getServer().getPluginManager().isPluginEnabled("Essentials")) {
             Logger.severe("Essentials not found!");
             getServer().getPluginManager().disablePlugin(this);
@@ -34,6 +38,11 @@ public final class Pl3xMapEssentials extends JavaPlugin {
             return;
         }
 
+        if (!Config.WARP_FEATURE && !Config.HOME_FEATURE && !Config.DEBUG_MODE) {
+            Logger.severe("You have neither warps nor homes enabled!");
+            getServer().getPluginManager().disablePlugin(this);
+            return;
+        }
         Pl3xMapHook.load(this);
 
         getServer().getPluginManager().registerEvents(new EssentialsListener(), this);

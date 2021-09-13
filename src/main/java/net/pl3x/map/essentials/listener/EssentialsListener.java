@@ -28,5 +28,6 @@ public class EssentialsListener implements Listener {
                 Pl3xMapHook.api().playerManager().hide(player.getUniqueId());
             }
         }
+
     }
 }

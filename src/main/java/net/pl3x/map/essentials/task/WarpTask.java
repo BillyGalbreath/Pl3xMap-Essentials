@@ -16,14 +16,14 @@ import net.pl3x.map.essentials.hook.Pl3xMapHook;
 import org.bukkit.Location;
 import org.bukkit.scheduler.BukkitRunnable;
 
-public class Pl3xMapTask extends BukkitRunnable {
+public class WarpTask extends BukkitRunnable {
     private final MapWorld world;
     private final SimpleLayerProvider provider;
     private final WorldConfig worldConfig;
 
     private boolean stop;
 
-    public Pl3xMapTask(MapWorld world, WorldConfig worldConfig, SimpleLayerProvider provider) {
+    public WarpTask(MapWorld world, WorldConfig worldConfig, SimpleLayerProvider provider) {
         this.world = world;
         this.provider = provider;
         this.worldConfig = worldConfig;
